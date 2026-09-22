@@ -23,6 +23,7 @@ import {
 
 const navItems = [
   { label: "Projetos", href: "#projetos" },
+  { label: "Oportunidades", href: "#oportunidades" },
   { label: "Método", href: "#metodo" },
   { label: "Sobre", href: "#sobre" },
   { label: "Contato", href: "#contato" },
@@ -36,9 +37,15 @@ const capabilities = [
 ];
 
 const projects = [
-  { id: "01", type: "Produto principal", title: "Ponto School", subtitle: "EdTech de IA para a rotina docente", description: "Produto criado para automatizar a criação, organização e comunicação de recursos educacionais. Uma experiência real de descoberta, construção e implementação em escolas.", result: "15+ escolas · 500+ professores", accent: "project-featured" },
-  { id: "02", type: "Experiência B2B", title: "Sites & Apps", subtitle: "Soluções digitais para negócios", description: "Criação de sites e aplicativos para imobiliárias, construtoras, clínicas, escolas e empresas que precisavam transformar presença digital em operação.", result: "Discovery · Produto · Entrega", accent: "project-sand" },
-  { id: "03", type: "Go-to-market", title: "Produtos digitais", subtitle: "Oferta, aquisição e monetização", description: "Infoprodutos e cursos na área de marketing digital, conectando copy, tráfego e vendas consultivas a uma operação comercial própria.", result: "R$ 300 mil+ em vendas", accent: "project-slate" },
+  { id: "01", type: "Produto principal", title: "Ponto School", subtitle: "EdTech de IA para a rotina docente", description: "Produto criado para automatizar a criação, organização e comunicação de recursos educacionais. Uma experiência real de descoberta, construção e implementação em escolas.", result: "15+ escolas · 500+ professores", detail: "Liderança de produto, operação e go-to-market de uma plataforma aplicada à rotina de professores, com uso real em escolas e aprendizado direto com usuários.", accent: "project-featured" },
+  { id: "02", type: "Experiência B2B", title: "Sites & Apps", subtitle: "Soluções digitais para negócios", description: "Criação de sites e aplicativos para imobiliárias, construtoras, clínicas, escolas e empresas que precisavam transformar presença digital em operação.", result: "Discovery · Produto · Entrega", detail: "Atuação consultiva do briefing à entrega: entender o contexto do negócio, traduzir necessidades em produto e coordenar a execução com clientes B2B.", accent: "project-sand" },
+  { id: "03", type: "Go-to-market", title: "Produtos digitais", subtitle: "Oferta, aquisição e monetização", description: "Infoprodutos e cursos na área de marketing digital, conectando copy, tráfego e vendas consultivas a uma operação comercial própria.", result: "R$ 300 mil+ em vendas", detail: "Experiência prática em posicionamento, copy, tráfego, vendas e monetização — repertório que ajuda a conectar produto com adoção e receita.", accent: "project-slate" },
+];
+
+const targetRoles = [
+  { title: "AI Solutions Engineer", description: "Projetar e implementar soluções com agentes, RAG, APIs e automações que resolvem problemas operacionais reais." },
+  { title: "Analista de Automação", description: "Mapear processos, encontrar gargalos e construir workflows end-to-end com dados, integrações e IA." },
+  { title: "AI Product Manager", description: "Conectar descoberta, PRD, priorização, experimentação e execução para transformar tecnologia em produto utilizado." },
 ];
 
 const processSteps = [
@@ -121,10 +128,22 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="oportunidades" className="opportunities-section py-24 lg:py-28">
+          <div className="container">
+            <div className="opportunities-heading">
+              <div><span className="section-kicker">01.5 / Onde posso gerar valor</span><h2 className="section-title">Três frentes.<br /><em>Um mesmo fio condutor.</em></h2></div>
+              <p className="section-lead">Procuro contextos em que visão de negócio, IA aplicada e capacidade de execução precisem trabalhar juntas — em startups, SaaS, consultorias, EdTechs ou times de inovação.</p>
+            </div>
+            <div className="role-grid">
+              {targetRoles.map((role, index) => <article key={role.title} className="role-card"><span className="role-index">0{index + 1}</span><h3>{role.title}</h3><p>{role.description}</p><a href="#contato" className="role-link">Conversar sobre esta frente <ArrowUpRight size={15} /></a></article>)}
+            </div>
+          </div>
+        </section>
+
         <section id="projetos" className="projects-section py-24 lg:py-32">
           <div className="container">
             <div className="section-heading mb-14"><div><span className="section-kicker section-kicker-dark">02 / Projetos selecionados</span><h2 className="section-title text-paper">Soluções com<br /><em>contexto e impacto.</em></h2></div><p className="section-lead text-paper/60">Três recortes de uma trajetória construída entre produto, operação, tecnologia e crescimento.</p></div>
-            <div className="grid gap-5 lg:grid-cols-3">{projects.map((project, index) => <article key={project.id} className={`project-card ${project.accent} ${index === 0 ? "lg:col-span-2" : ""}`}><div className="project-top"><span className="project-id">{project.id}</span><span className="project-type">{project.type}</span></div><div className="project-graphic" aria-hidden="true">{index === 0 ? <><div className="mini-window window-main"><div className="window-bar"><span /><span /><span /></div><div className="window-lines"><i /><i /><i /><i /></div><div className="window-chart"><b /><b /><b /><b /><b /></div></div><div className="mini-pill">Ponto<br />School</div><div className="mini-spark">✦</div></> : index === 1 ? <><div className="flow-chip chip-one">brief</div><ArrowRight className="flow-arrow" size={20} /><div className="flow-chip chip-two">build</div><ArrowRight className="flow-arrow second" size={20} /><div className="flow-chip chip-three">launch</div></> : <><div className="sales-circle"><span>R$</span><strong>300k</strong></div><div className="sales-line line-one" /><div className="sales-line line-two" /><div className="sales-dot dot-one" /><div className="sales-dot dot-two" /></>}</div><div className="project-content"><h3>{project.title}</h3><p className="project-subtitle">{project.subtitle}</p><p className="project-description">{project.description}</p><div className="project-result"><Check size={15} /> <span>{project.result}</span></div></div><div className="project-footer"><span>Ver case em breve</span><ArrowUpRight size={18} /></div></article>)}</div>
+            <div className="grid gap-5 lg:grid-cols-3">{projects.map((project, index) => <article key={project.id} className={`project-card ${project.accent} ${index === 0 ? "lg:col-span-2" : ""}`}><div className="project-top"><span className="project-id">{project.id}</span><span className="project-type">{project.type}</span></div><div className="project-graphic" aria-hidden="true">{index === 0 ? <><div className="mini-window window-main"><div className="window-bar"><span /><span /><span /></div><div className="window-lines"><i /><i /><i /><i /></div><div className="window-chart"><b /><b /><b /><b /><b /></div></div><div className="mini-pill">Ponto<br />School</div><div className="mini-spark">✦</div></> : index === 1 ? <><div className="flow-chip chip-one">brief</div><ArrowRight className="flow-arrow" size={20} /><div className="flow-chip chip-two">build</div><ArrowRight className="flow-arrow second" size={20} /><div className="flow-chip chip-three">launch</div></> : <><div className="sales-circle"><span>R$</span><strong>300k</strong></div><div className="sales-line line-one" /><div className="sales-line line-two" /><div className="sales-dot dot-one" /><div className="sales-dot dot-two" /></>}</div><div className="project-content"><h3>{project.title}</h3><p className="project-subtitle">{project.subtitle}</p><p className="project-description">{project.description}</p><div className="project-result"><Check size={15} /> <span>{project.result}</span></div></div><details className="project-details"><summary>Ver resumo do case <ArrowUpRight size={16} /></summary><p>{project.detail}</p></details></article>)}</div>
           </div>
         </section>
 
